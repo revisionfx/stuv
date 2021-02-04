@@ -1,7 +1,7 @@
 # STUV
 
 # Definition:
-Needed to name this something, UV and ST coordinates (and to a degree MV) is our concern here and looking up urban dictionary the most upvoted definition for that sort of sums up to dumb blonde (not to confused with stub or stud), so that seemed appropriate, so STUV: "expression used in computer graphics, image processing and computer vision to flag/tag data to avoid working in the wrong coordinates system so that stupid results are not produced when mapping the results of two bug-free perfectly accurate software.” 
+Needed to name this something, UV and ST coordinates (and to a degree MV) is our concern here and stuv is almost a word. Looking up urban dictionary the most upvoted definition for that sort of sums up to dumb blonde (not to confused with stub or stud), so that seemed appropriate, so STUV: "expression used in computer graphics, image processing and computer vision to flag/tag data to avoid working in the wrong coordinates system so that stupid results are not produced when mapping the results of two bug-free perfectly accurate software.” 
 
 If UV maps are to be used as an asset to exchange between applications, then it appears the rendering sampling grid must be clearly specified.  How we do a simple sanity test for arbitrary app M to app N? For example generate lens distortion in one app and remap a renderer rays to such UV map...
 
