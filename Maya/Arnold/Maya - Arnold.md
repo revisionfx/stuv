@@ -13,6 +13,8 @@ Images:
 	* Preferences/Color Management: Enabled (default)
 * AOVs:
 	* Beauty
+		* IMPORTANT: Set Render Settings > Arnold > Filter to either "closest" or "gaussian" 1x1
+			* Default filter Gaussian 2x2 generates non full alpha pixels in the edges of the UV AOV render
 	* UV (Result is identical to the Beauty render)
 		* aiUtility shader. Color Mode: UV Coords. Shade Mode: Flat
 		* IMPORTANT: Set Render Settings > AOV > UV filter to either "closest" or "gaussian" 1x1
