@@ -1,0 +1,596 @@
+Composition {
+	CurrentTime = 0,
+	RenderRange = { 0, 1000 },
+	GlobalRange = { 0, 1000 },
+	CurrentID = 48,
+	HiQ = true,
+	PlaybackUpdateMode = 0,
+	Version = "Fusion Studio 17.0 build 18",
+	SavedOutputs = 2,
+	HeldTools = 0,
+	DisabledTools = 0,
+	LockedTools = 1,
+	AudioOffset = 0,
+	AutoRenderRange = true,
+	Resumable = true,
+	OutputClips = {
+	},
+	Tools = {
+		Background1 = Background {
+			Inputs = {
+				Width = Input { Value = 1000, },
+				Height = Input { Value = 1000, },
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+			},
+			ViewInfo = OperatorInfo { Pos = { -69.3333, 122.515 } },
+		},
+		CustomTool1LUTIn1 = LUTBezier {
+			KeyColorSplines = {
+				[0] = {
+					[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+					[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+				}
+			},
+			SplineColor = { Red = 204, Green = 0, Blue = 0 },
+			NameSet = true,
+		},
+		CustomTool1LUTIn3 = LUTBezier {
+			KeyColorSplines = {
+				[0] = {
+					[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+					[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+				}
+			},
+			SplineColor = { Red = 0, Green = 0, Blue = 204 },
+			NameSet = true,
+		},
+		CustomTool1LUTIn4 = LUTBezier {
+			KeyColorSplines = {
+				[0] = {
+					[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+					[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+				}
+			},
+			SplineColor = { Red = 204, Green = 204, Blue = 204 },
+			NameSet = true,
+		},
+		CustomTool1 = Custom {
+			CtrlWZoom = false,
+			Inputs = {
+				LUTIn1 = Input {
+					SourceOp = "CustomTool1LUTIn1",
+					Source = "Value",
+				},
+				LUTIn2 = Input {
+					SourceOp = "CustomTool1LUTIn2",
+					Source = "Value",
+				},
+				LUTIn3 = Input {
+					SourceOp = "CustomTool1LUTIn3",
+					Source = "Value",
+				},
+				LUTIn4 = Input {
+					SourceOp = "CustomTool1LUTIn4",
+					Source = "Value",
+				},
+				RedExpression = Input { Value = "x1", },
+				GreenExpression = Input { Value = "y1\n", },
+				BlueExpression = Input { Value = "0", },
+				AlphaExpression = Input { Value = "1", },
+				AuxChannelNest = Input { Value = 1, },
+				Image1 = Input {
+					SourceOp = "Background1",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 51, 121.227 } },
+		},
+		Merge3D1 = Merge3D {
+			Inputs = {
+				SceneInput1 = Input {
+					SourceOp = "Reference_pPlane_UV",
+					Source = "Output",
+				},
+				SceneInput2 = Input {
+					SourceOp = "Camera001",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 282.031, 200.396 } },
+		},
+		Renderer3D1 = Renderer3D {
+			CustomData = {
+				ToolVersion = 2,
+			},
+			Inputs = {
+				Width = Input { Value = 1000, },
+				Height = Input { Value = 1000, },
+				["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+				SceneInput = Input {
+					SourceOp = "Merge3D1",
+					Source = "Output",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 433.333, 204.609 } },
+		},
+		lambert3_1 = MtlBlinn {
+			Inputs = {
+				["Diffuse.Color.Material"] = Input {
+					SourceOp = "CustomTool1",
+					Source = "Output",
+				},
+				["Specular.Nest"] = Input { Value = 1, },
+				MaterialID = Input { Value = 6, },
+				StartRenderScripts = Input { Value = 1, },
+				EndRenderScripts = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 189, 121.439 } },
+		},
+		CustomTool1LUTIn2 = LUTBezier {
+			KeyColorSplines = {
+				[0] = {
+					[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+					[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+				}
+			},
+			SplineColor = { Red = 0, Green = 204, Blue = 0 },
+			NameSet = true,
+		},
+		Reference_pPlane_UV = SurfaceFBXMesh {
+			CustomData = {
+				NumMtlSlots = 1,
+			},
+			Inputs = {
+				["Transform3DOp.Translate.Y"] = Input { Value = -2.62947561250145e-16, },
+				["Transform3DOp.Translate.Z"] = Input { Value = -500, },
+				["Transform3DOp.Rotate.X"] = Input { Value = 90, },
+				["Transform3DOp.Scale.X"] = Input { Value = 1000, },
+				["Transform3DOp.Scale.Y"] = Input { Value = 1000, },
+				["Transform3DOp.Scale.Z"] = Input { Value = 1000, },
+				ImportFile = Input { Value = "/Users/zbug/Developer/stuv/Maya/FBX/ReferencePlane_STUV_Direct_place2dTexture_FBX_EmbedMedia_ACII.fbx", },
+				ObjName = Input { Value = "Reference_pPlane_UV", },
+				TakeName = Input { Value = "Take 001", },
+				TransformToWorld = Input { Value = 0, },
+				EnableAxisConversion = Input { Value = 1, },
+				EnableUnitConversion = Input { Value = 1, },
+				["ObjectID.ObjectID"] = Input { Value = 1, },
+				["Materials.surfaceShader1_mat0"] = Input {
+					SourceOp = "lambert3_1",
+					Source = "MaterialOutput",
+					CustomData = {
+						MtlSlotIndex = 0
+					},
+				},
+				["MtlStdInputs.MaterialID"] = Input { Value = 1, },
+				MultiMaterial = Input { Value = 1, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 161.027, 179.694 } },
+		},
+		Camera001 = Camera3D {
+			Locked = true,
+			Inputs = {
+				["Transform3DOp.Rotate.X"] = Input { Value = 9.33466764261142e-06, },
+				PerspNearClip = Input { Value = 10, },
+				PerspFarClip = Input { Value = 4000, },
+				AovType = Input { Value = 1, },
+				AoV = Input { Value = 90.000002504478, },
+				FLength = Input { Value = 17.999999713874, },
+				["Stereo.Mode"] = Input { Value = FuID { "OffAxis" }, },
+				FilmGate = Input { Value = FuID { "User" }, },
+				ApertureW = Input { Value = 1.41732287406921, },
+				ApertureH = Input { Value = 1.41732287406921, },
+				ResolutionGateFit = Input { Value = FuID { "Width" }, },
+				["SurfacePlaneInputs.ObjectID.ObjectID"] = Input { Value = 2, },
+				["MtlStdInputs.MaterialID"] = Input { Value = 2, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 159.703, 219.917 } },
+		}
+	},
+	Frames = {
+		{
+			FrameTypeID = "ChildFrame",
+			Mode = 3,
+			LayoutPreset = 0,
+			PresetName = "Default",
+			Left = 0,
+			Top = 27,
+			Width = 1680,
+			Height = 955,
+			ZoneInfo = {
+				["!Right"] = {
+				},
+				["!Left"] = {
+				},
+				AuxLeft = { Expanded = true },
+				Right = { Expanded = true, },
+				Left = { Expanded = false, },
+				AuxRight = { Expanded = true }
+			},
+			ViewInfo = {
+				Viewer1 = { Show = true, RatioY = 0.01, RatioX = 1.05254777070064, },
+				InnerLeft = {
+				},
+				MainSplit = {
+					RatioX = 100,
+					RatioY = 1.00347222222222,
+				},
+				CenterSplit = {
+					RatioX = 1,
+					RatioY = 100,
+				},
+				Viewer2 = { Show = true, RatioY = 0.01, RatioX = 0.947452229299363, },
+				Comments = { Show = false },
+				Time = { Show = true, PixelY = 83, RatioX = 100, },
+				InnerColumns = {
+					RatioX = 100,
+					RatioY = 1.99652777777778,
+				},
+				Keyframes = { Show = false, },
+				LayoutStrip = { Show = true, RatioX = 100, },
+				Inspector = { Show = true, RatioY = 1, RatioX = 99.9761478831246, },
+				InnerRight = {
+				},
+				OuterLeft = {
+				},
+				OuterColumns = {
+					RatioX = 100,
+					RatioY = 1,
+				},
+				Effects = { Show = false, },
+				Clips = { Show = false, },
+				Metadata = { Show = false, },
+				ActionStrip = { Show = true, RatioX = 100, },
+				ViewerSplit = {
+					RatioX = 100,
+					RatioY = 1,
+				},
+				Nodes = { Show = true, RatioY = 100, RatioX = 1, },
+				OuterRight = {
+					RatioY = 100,
+					PixelX = 420,
+				},
+				MediaPool = { Show = false, },
+				Spline = { Show = false, }
+			},
+			Views = ordered() {
+				Effects = MultiView {
+					Active = "EffectView",
+					ViewList = ordered() {
+						EffectView = "EffectView"
+					},
+				},
+				Nodes = MultiView {
+					Active = "FlowView",
+					ViewList = ordered() {
+						FlowView = "FlowView"
+					},
+					Names = {
+						FlowView = "FlowView"
+					},
+					FlowView = FlowView {
+						Flags = {
+							AutoHideNavigator = true,
+							AutoSnap = true,
+							RemoveRouters = true
+						},
+						NavigatorSize = { 200, 140 },
+						Direction = "Horizontal",
+						PipeStyle = "Direct",
+						RootScale = 1.19132,
+						RootOffset = { 139.099, -98.3369 }
+					}
+				},
+				Keyframes = MultiView {
+					Active = "TimelineView",
+					ViewList = ordered() {
+						TimelineView = "TimelineView"
+					},
+					Names = {
+						TimelineView = "TimelineView"
+					},
+					TimelineView = TimelineView {
+						TreeControlState = {
+						},
+						DisplayMode = "All Tools",
+						ShowCurrentTimeTools = false,
+						Filter = "Show All",
+						ShowSelectedTools = false,
+						ShowAnimatedToolsOnly = false,
+						ShowEditBoxes = false,
+						KeyFrameView = {
+							Position = { Left = 232, Bottom = 320 },
+							ScaleX = 2.14424951267057,
+							OffsetX = -51.4619883040936,
+							OffsetY = 0,
+							AutoScaling = "scroll",
+							AutoSnapTo = "frame",
+							AutoSnapToGuidelines = false,
+							GuidelinesGrabEnabled = true,
+							GuidelinesSnapTo = "frame"
+						},
+						Spreadsheet = { LeftPos = 232, Visible = false }
+					}
+				},
+				Spline = MultiView {
+					Active = "SplineView",
+					ViewList = ordered() {
+						SplineView = "SplineEditorView"
+					},
+					Names = {
+						SplineView = "SplineView"
+					},
+					SplineView = SplineEditorView {
+						LeftPos = 264,
+						ScaleX = 0.2,
+						ScaleY = 0.00338983050847458,
+						OffsetX = -3.4,
+						OffsetY = 0,
+						AutoScaling = "scroll",
+						AutoSnapTo = "frame",
+						AutoSnapToGuidelines = false,
+						GuidelinesSnapTo = "frame",
+						ShowKeyMarkers = false,
+						IndependentHandles = false,
+						ShowNonSplineModifiers = false,
+						GuidelinesGrabEnabled = true,
+						ShowOneToolOnly = false,
+						ShowSelectedTools = false,
+						ShowAllInputs = false,
+						Filter = "Show All"
+					}
+				},
+				Inspector = MultiView {
+					Active = "Tools",
+					ViewList = ordered() {
+						Tools = "ControlView",
+						Modifiers = "ModifierView"
+					},
+				},
+				Viewer1 = MultiView {
+					Active = "LeftView",
+					ViewList = ordered() {
+						LeftView = "PreviewContainer"
+					},
+					Names = {
+						LeftView = "LeftView"
+					},
+				},
+				Viewer2 = MultiView {
+					Active = "RightView",
+					ViewList = ordered() {
+						RightView = "PreviewContainer"
+					},
+					Names = {
+						RightView = "RightView"
+					},
+				},
+				Time = "TimeView",
+				ActionStrip = "ActionStripView",
+				LayoutStrip = "LayoutStripView"
+			},
+			Layout = {
+				Rows = 2,
+				RatioX = 1,
+				RatioY = 1,
+				{ ID = "LayoutStrip", RatioX = 100, FixedY = 36, Flat = true },
+				{
+					Columns = 2,
+					RatioY = 1,
+					{
+						Rows = 3,
+						RatioX = 1,
+						RatioY = 100,
+						{
+							Rows = 2,
+							RatioX = 1,
+							RatioY = 100,
+							{
+								Columns = 2,
+								RatioX = 100,
+								RatioY = 1,
+								{ ID = "Viewer1", RatioX = 1.05254777070064, RatioY = 0.01 },
+								{ ID = "Viewer2", RatioX = 0.947452229299363 }
+							},
+							{ ID = "Time", FixedY = 83, Flat = true }
+						},
+						{ ID = "ActionStrip", FixedY = 50, Flat = true },
+						{ ID = "Nodes", RatioX = 1, RatioY = 100 }
+					},
+					{ ID = "Inspector", RatioX = 99.9761478831246, RatioY = 1 }
+				}
+			}
+		}
+	},
+	Prefs = {
+		Comp = {
+			Interactive = {
+				Proxy = {
+					Auto = true
+				},
+			},
+			Views = {
+				RightView = {
+					Viewer = {
+						ScaleMode = 0,
+					},
+					MaterialViewer = {
+						Camera = {
+							Rotation = {
+								Y = -20,
+								X = 15,
+								Z = 0
+							}
+						}
+					},
+					View3D = {
+						CamFront = {
+							Rotation = {
+								Y = 0,
+								X = 0,
+								Z = 0
+							},
+							Scale = 1,
+							Position = {
+								Y = 0,
+								X = 0,
+								Z = 0
+							}
+						},
+						CamLeft = {
+							Rotation = {
+								Y = 90,
+								X = 0,
+								Z = 0
+							},
+							Scale = 1,
+							Position = {
+								Y = 0,
+								X = 0,
+								Z = 0
+							}
+						},
+						CamTop = {
+							Rotation = {
+								Y = 0,
+								X = 90,
+								Z = 0
+							},
+							Scale = 1,
+							Position = {
+								Y = 0,
+								X = 0,
+								Z = 0
+							}
+						},
+						CamPersp = {
+							Rotation = {
+								Y = 0,
+								X = 30.0000019073486,
+								Z = 0
+							},
+							Scale = 0.25,
+							Position = {
+								Y = 0,
+								X = 0,
+								Z = 250
+							}
+						},
+						CamRight = {
+							Rotation = {
+								Y = -90,
+								X = 0,
+								Z = 0
+							},
+							Scale = 1,
+							Position = {
+								Y = 0,
+								X = 0,
+								Z = 0
+							}
+						},
+						CameraName = "Camera001",
+					},
+				},
+				LeftView = {
+					Viewer = {
+						ScaleMode = 1,
+						Channel = 4294967295,
+					},
+					View3D = {
+						CamFront = {
+							Rotation = {
+								Y = 0,
+								X = 0,
+								Z = 0
+							},
+							Scale = 1,
+							Position = {
+								Y = 0,
+								X = 0,
+								Z = 0
+							}
+						},
+						CamLeft = {
+							Rotation = {
+								Y = 90,
+								X = 0,
+								Z = 0
+							},
+							Scale = 1,
+							Position = {
+								Y = 0,
+								X = 0,
+								Z = 0
+							}
+						},
+						CamPersp = {
+							Rotation = {
+								Y = 59.5999984741211,
+								X = 6.79999971389771,
+								Z = 0
+							},
+							Scale = 0.00107895932160318,
+							Position = {
+								Y = -40.5331077575684,
+								X = -39.9237060546875,
+								Z = 525.508850097656
+							}
+						},
+						CamRight = {
+							Rotation = {
+								Y = -90,
+								X = 0,
+								Z = 0
+							},
+							Scale = 1,
+							Position = {
+								Y = 0,
+								X = 0,
+								Z = 0
+							}
+						},
+						CamTop = {
+							Rotation = {
+								Y = 0,
+								X = 90,
+								Z = 0
+							},
+							Scale = 1,
+							Position = {
+								Y = 0,
+								X = 0,
+								Z = 0
+							}
+						},
+						CameraName = "Perspective"
+					},
+				},
+				View1 = {
+				},
+				Defaults = {
+					OpToolbar = {
+						Size = 1
+					},
+				},
+			},
+			Preview = {
+				HiQ = false,
+			},
+			FrameFormat = {
+				GuideRatio = 1.77777777777778,
+			},
+			LastFile = "/Users/zbug/Downloads/RemapIssue/UVPass.exr",
+			Tweaks = {
+				OpenCL = {
+					Enable = 2,
+					Caching = 2
+				}
+			},
+			Paths = {
+			},
+			QuickTime = {
+			},
+		}
+	},
+}
+
